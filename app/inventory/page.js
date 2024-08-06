@@ -23,8 +23,7 @@ export default function Home() {
   const [selectedCategory, setSelectedCategory] = useState('');
   const { user } = useUser();
 
-
-  //this is here to check to protect this route
+  // Check and protect this route
   useEffect(() => {
     if (!user) {
       router.push('/signup');
@@ -94,11 +93,10 @@ export default function Home() {
 
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
-
   const handleSnackbarClose = () => setSnackbarOpen(false);
 
   return (
-    <Container>
+    <Container maxWidth="md">
       <Box my={4}>
         <TextField
           label="Search"
@@ -151,7 +149,8 @@ export default function Home() {
             flexDirection="column"
             gap={3}
             sx={{
-              transform: "translate(-50%,-50%)"
+              transform: "translate(-50%,-50%)",
+              width: { xs: '90%', sm: '400px' }
             }}
           >
             <Typography variant="h6">Add Item</Typography>
@@ -197,9 +196,10 @@ export default function Home() {
         <Typography variant="h3" sx={{ mb: 2 }}>Pantry Items</Typography>
 
         <TableContainer component={Paper} sx={{
-          color:'grey'
+          color: 'grey',
+          maxHeight: { xs: '400px', sm: 'auto' }
         }}>
-          <Table sx={{color:'grey'}}>
+          <Table stickyHeader sx={{ color: 'grey' }}>
             <TableHead>
               <TableRow>
                 <TableCell>Name</TableCell>
@@ -218,11 +218,14 @@ export default function Home() {
                 )
                 .map((item) => (
                   <TableRow 
-                    key={item.name}
-                    sx={{ 
-                      border: item.quantity === item.threshold ? '2px solid red' : '1px solid #ccc',
-                      borderRadius:'10px'
-                    }}
+                  key={item.name}
+                  sx={{
+                    border: item.quantity <= item.threshold ? '2px solid red' : '1px solid #ccc',
+                    borderRadius: '10px',
+                    '&:hover': {
+                      backgroundColor: '#f5f5f5',
+                    }
+                  }}
                   >
                     <TableCell>{item.name}</TableCell>
                     <TableCell>{item.category}</TableCell>

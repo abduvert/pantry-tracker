@@ -29,24 +29,28 @@ const SignUp = () => {
         justifyContent: 'center',
         alignItems: 'center',
         height: '100vh',
+        px: { xs: 2, sm: 4 }, // Responsive padding
+        py: { xs: 4, sm: 6 }, // Responsive padding
       }}
     >
       <Card
         variant="outlined"
         sx={{
           display: 'flex',
+          flexDirection: 'column',
           justifyContent: 'center',
-          width: '30%',
+          width: { xs: '90%', sm: '70%', md: '50%' }, // Responsive width
+          maxWidth: '400px',
           borderRadius: '12px',
-          p: '2em',
+          p: { xs: 2, sm: 4 }, // Responsive padding
           boxShadow: '1px 1px 1px 0px black',
         }}
       >
         <Stack spacing={2} padding={2}>
-          <Typography variant="h5" sx={{ fontWeight: 'bold' }}>
+          <Typography variant="h5" sx={{ fontWeight: 'bold', textAlign: 'center' }}>
             Sign In
           </Typography>
-          <Typography variant="body1">
+          <Typography variant="body1" sx={{ textAlign: 'center' }}>
             Sign up with us to manage your inventory
           </Typography>
           <Button
@@ -54,11 +58,12 @@ const SignUp = () => {
             startIcon={<GoogleIcon />}
             sx={{
               borderRadius: '10px',
-          backgroundColor: 'black', 
-          color: '#ccd300',
-          '&:hover': { 
-            backgroundColor: 'black',
-          },
+              backgroundColor: 'black',
+              color: '#ccd300',
+              '&:hover': { 
+                backgroundColor: 'black',
+              },
+              width: '100%', // Full-width button
             }}
             onClick={handleSignIn}
           >

@@ -3,7 +3,8 @@ import './globals.css';
 import { UserProvider } from './context/UserContext';
 import Header from './components/header';  
 import Footer from './components/footer';  
-const poppins = Poppins({ subsets: ['latin'], weight: ['400', '700'] });
+
+const poppins = Poppins({ subsets: ['latin'], weight: ['200','300','400', '500','700','800'] });
 
 export const metadata = {
   title: 'Pantry Tracker',
@@ -15,9 +16,9 @@ export default function RootLayout({ children }) {
     <html lang="en">
       <body className={poppins.className}>
         <UserProvider>
-        <Header />
-        <main>{children}</main>
-        <Footer />
+          <Header />
+          <main>{children}</main>
+          <Footer />
         </UserProvider>
       </body>
     </html>

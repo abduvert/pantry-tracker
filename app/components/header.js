@@ -44,15 +44,15 @@ const Header = () => {
       onClick={toggleDrawer(false)}
       onKeyDown={toggleDrawer(false)}
     >
-      <List>
-        {['Sign Up', 'Login', 'Inventory'].map((text) => (
-          <ListItem button key={text}>
-            <Link href={`/${text.replace(' ', '').toLowerCase()}`} passHref>
-              <ListItemText primary={text} />
-            </Link>
+    <List>
+      {['Home', 'Inventory', 'Sign Up'].map((text) => (
+        <Link href={text === 'Home' ? '/' : `/${text.replace(' ', '').toLowerCase()}`} passHref key={text}>
+          <ListItem button>
+            <ListItemText primary={text} />
           </ListItem>
-        ))}
-      </List>
+        </Link>
+      ))}
+    </List>
     </Box>
   );
 
@@ -60,22 +60,24 @@ const Header = () => {
     <Container>
       <AppBar position="static" sx={{ bgcolor: 'black', borderRadius: 5, mt: { xs: 1 } }}>
         <Toolbar>
-          <Typography variant="h6" component="div" sx={{ flexGrow: 1, color: "#ccd300" }}>
+          <Typography variant="h6" component="h1" sx={{ flexGrow: 1, color: "#ccd300", fontFamily: 'Poppins, Arial, sans-serif' }}>
             Pantry Tracker
           </Typography>
           <Box sx={{ display: { xs: 'none', md: 'block' } }}>
             <Link href="/" passHref>
-              <Button color="inherit" sx={{ textTransform: 'capitalize' }}>Home</Button>
+              <Button color="inherit" sx={{ textTransform: 'capitalize', fontFamily: 'Poppins, Arial, sans-serif' }}>Home</Button>
             </Link>
             <Link href="/inventory" passHref>
-              <Button color="inherit" sx={{ textTransform: 'capitalize' }}>Inventory</Button>
+              <Button color="inherit" sx={{ textTransform: 'capitalize', fontFamily: 'Poppins, Arial, sans-serif' }}>Inventory</Button>
             </Link>
             {!user ? (
               <Link href="/signup" passHref>
-                <Button color="inherit" sx={{ textTransform: 'capitalize' }}>Sign Up</Button>
+                <Button color="inherit" sx={{ textTransform: 'capitalize', fontFamily: 'Poppins, Arial, sans-serif' }}>Sign Up</Button>
               </Link>
             ) : (
-              <Button onClick={handleSignOut} color="inherit" sx={{ textTransform: 'capitalize' }}>Sign Out</Button>
+              <Link href='/'>
+              <Button onClick={handleSignOut} color="inherit" sx={{ textTransform: 'capitalize', fontFamily: 'Poppins, Arial, sans-serif' }}>Sign Out</Button>
+              </Link>
             )}
           </Box>
           <Box sx={{ display: { xs: 'block', md: 'none' } }}>
